@@ -46,13 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\orbitAndLaunch.cs" />
-     <Compile Include="Assets\planetaryGravity.cs" />
-     <Compile Include="Assets\reproduceBeing.cs" />
-     <Compile Include="Assets\rotateCamera.cs" />
-     <Compile Include="Assets\spawnBeing.cs" />
-     <Compile Include="Assets\spawnPlanets.cs" />
-     <Compile Include="Assets\textPrompts.cs" />
+     <Compile Include="Assets\Scripts\orbitAndLaunch.cs" />
+     <Compile Include="Assets\Scripts\planetaryGravity.cs" />
+     <Compile Include="Assets\Scripts\reproduceBeing.cs" />
+     <Compile Include="Assets\Scripts\rotateCamera.cs" />
+     <Compile Include="Assets\Scripts\spawnBeing.cs" />
+     <Compile Include="Assets\Scripts\spawnPlanets.cs" />
+     <Compile Include="Assets\Scripts\textPrompts.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
