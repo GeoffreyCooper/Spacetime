@@ -45,12 +45,7 @@ public class orbitAndLaunch : MonoBehaviour {
 					Vector3 v = planet.transform.position - transform.position;
 					GetComponent<Rigidbody2D>().AddForce(v.normalized * (1.0f - dist / maxGravDist) * -maxGravity);
 					StartCoroutine(springJ(planet));
-				}/*
-				else if (dist > maxGravDist) {
-					//rigidbody2D.velocity /= 10;
-					theSpringJoint.connectedBody = planet.rigidbody2D;
-					theSpringJoint.enabled = true;
-				}*/
+				}
 			}
 		}
 		else if (inSpace == true) {

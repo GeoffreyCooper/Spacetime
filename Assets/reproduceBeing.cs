@@ -30,18 +30,12 @@ public class reproduceBeing : MonoBehaviour {
 		if (planetsHaveSettled == true) {
 			Debug.Log("collided");
 			coll.rigidbody.velocity /= 10;
-			//coll.gameObject.renderer.material.color = Color.red;
 			//change beingEncapsulated graphic to empty circle
 			spriteRenderer = coll.gameObject.GetComponent<SpriteRenderer>();
 			spriteRenderer.sprite = emptyEncapsulatedSprite;
 			Vector3 planetForce = transform.position - coll.transform.position;
 			GameObject beingClone = (GameObject)Instantiate(beingPrefab, coll.transform.position, Quaternion.identity);
 			beingClone.GetComponent<Rigidbody2D>().AddForce(planetForce.normalized * 100);
-			/*
-			GameObject secondBeingClone = (GameObject)Instantiate(beingPrefab, transform.position, Quaternion.identity);
-			secondBeingClone.rigidbody2D.AddForce(planetForce.normalized * 100);
-			GameObject thirdBeingClone = (GameObject)Instantiate(beingPrefab, transform.position, Quaternion.identity);
-			thirdBeingClone.rigidbody2D.AddForce(planetForce.normalized * 100);*/
 			if (hasReproduced == false) {
 				GameObject theText = GameObject.Find("Text");
 				textPrompts prompts = theText.GetComponent<textPrompts>();
@@ -65,13 +59,9 @@ public class reproduceBeing : MonoBehaviour {
 				//Debug.Log(BeingsOnThisPlanet);
 				if (BeingsOnThisPlanet == 2) {
 					Debug.Log ("reproduce!");
-					//every x seconds add a clone, until BeingsOnThisPlanet reaches a certain number
-					//start coroutine and use waitforseconds in ienumerator?
 					if (hasReproduced == false) {
 						StartCoroutine(reproduce());
 					}
-					//GameObject beingClone = (GameObject)Instantiate(beingPrefab, transform.position, Quaternion.identity);
-					//beingClone.rigidbody2D.AddForce(new Vector2(Random.Range(-100,100),Random.Range(-100,100)));
 				}
 			}
 			oldNumBeings = beings.Length;
@@ -80,8 +70,6 @@ public class reproduceBeing : MonoBehaviour {
 	}
 
 	IEnumerator reproduce() {
-		//audioSource = GameObject.Find("reproductionSound");
-		//audioSource.audio.Play();
 		hasReproduced = true;
 		reproduceSound.Play ();
 		GameObject theText = GameObject.Find("Text");
@@ -120,14 +108,4 @@ public class reproduceBeing : MonoBehaviour {
 		yield return new WaitForSeconds(1.0f);
 		planetsHaveSettled = true;
 	}
-
-	/*
-	beings = GameObject.FindGameObjectsWithTag("being");
-	foreach (GameObject being in beings) {
-		float dist = Vector3.Distance(being.transform.position, transform.position);
-		if (dist <= maxGravDist) {
-			numBeings += 1;
-		}
-	}
-	Debug.Log(numBeings);*/
 }

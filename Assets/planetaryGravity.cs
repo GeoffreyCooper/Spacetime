@@ -12,7 +12,6 @@ public class planetaryGravity : MonoBehaviour {
 	
 	void Start () {
 		planets = GameObject.FindGameObjectsWithTag("planet");
-		//Physics2D.IgnoreLayerCollision(8,9, true);
 		foreach(GameObject planet in planets) {
 			float dist = Vector3.Distance(planet.transform.position, transform.position);
 			if (dist <= maxGravDist) {
@@ -47,28 +46,4 @@ public class planetaryGravity : MonoBehaviour {
 			}
 		}
 	}
-
-
-	//OLD -- can delete
-	/*
-	void FixedUpdate () {
-		foreach(GameObject planet in planets) {
-			float dist = Vector3.Distance(planet.transform.position, transform.position);
-			if (dist <= maxGravDist) {
-				Vector3 v = planet.transform.position - transform.position;
-				rigidbody2D.AddForce(v.normalized * (1.0f - dist / maxGravDist) * maxGravity);
-				inGravity = true;
-			}
-			//once a being leaves gravity, inGravity is still true
-		}
-		//destroy if inGravity is false
-		if (inGravity == false) {
-			Color color = renderer.material.color;
-			color.a -= 0.01f;
-			renderer.material.color = color;
-			if (color.a < 0.1f){
-				Destroy(this.gameObject);
-			}
-		}
-	}*/
 }
